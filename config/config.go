@@ -15,6 +15,8 @@ var (
 	Port       string
 	JwtSignKey string
 	JwtExpTime int
+	Username   string
+	Password   string
 )
 
 // 设置日志级别
@@ -37,11 +39,15 @@ func init() {
 	viper.SetDefault("PORT", ":8080") //注意要加冒号，设置系统环境变量的时候也要加冒号
 	viper.SetDefault("JWT_SIGN_KEY", "rabbit")
 	viper.SetDefault("JWT_EXPIRE_TIME", 120)
+	viper.SetDefault("USERNAME", "llkk")
+	viper.SetDefault("PASSWORD", "aabbcc")
 	viper.AutomaticEnv()
 	//获取程序配置
 	logLevel := viper.GetString("LOG_LEVEL")
 	Port = viper.GetString("PORT")
 	JwtSignKey = viper.GetString("JWT_SIGN_KEY")
 	JwtExpTime = viper.GetInt("JWT_EXPIRE_TIME")
+	Username = viper.GetString("USERNAME")
+	Password = viper.GetString("PASSWORD")
 	SetLogLevel(logLevel)
 }
