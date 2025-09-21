@@ -20,5 +20,9 @@ func main() {
 	port := config.Port
 	res, _ := jwtutil.GenToken("llll")
 	fmt.Println("生成的jwt的token为:", res)
+	_, err := jwtutil.ParseToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxsbGwiLCJpc3MiOiJsbGtrIiwic3ViIjoic3ViUmFiYml0IiwiZXhwIjoxNzU4NDM4ODAxLCJuYmYiOjE3NTg0MzE2MDEsImlhdCI6MTc1ODQzMTYwMX0.6JUIZdCAjPuqdnyNjuF_drZL1hhqLwtFPr-wEd_ydqk")
+	if err != nil {
+		fmt.Printf("解析token出错:%v\n", err.Error())
+	}
 	r.Run(port)
 }
